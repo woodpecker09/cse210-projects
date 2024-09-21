@@ -7,7 +7,6 @@ class Program
         Random randomNumber = new Random();
 
         int magicNumber =  randomNumber.Next(1,101);
-        Console.WriteLine($"the magic number is{magicNumber}");
         int guessNumber = 0;
         bool continuePlaying = true;
         int counting = 0;     
