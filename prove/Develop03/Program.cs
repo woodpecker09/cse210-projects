@@ -1,3 +1,5 @@
+//(As a stretch challenge, try to randomly select from only those words that are not already hidden.)
+//see the class Scripture in the funtion HideRandomWords()
 using System;
 
 class Program
