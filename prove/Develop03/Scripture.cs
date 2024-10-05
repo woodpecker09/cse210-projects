@@ -5,22 +5,35 @@ public class Scripture
 
         public Scripture(Reference Reference, string text)
             {
+
                 
                 string[] words = text.Split(' ');
- 
+                
                 _words = new List<Word>();             
                 foreach (string word in words)
                       {
                           
-                          Word word1 = new Word(word);
-                          _words.Add(word1);
+                          Word newWord = new Word(word);
+                          _words.Add(newWord);
                       }                                        
           
             }
         public void HideRandomWords(int numberToHide)
-            {   
-                _words[numberToHide].Hide();
-                
+            {           
+                        int count = _words.Count();
+                        Random random = new Random();
+                        int index = random.Next(2, count);
+                        for (int i = 0; i < numberToHide; i++)
+                            {
+                                //I create this loop in order to know if the word was already hidden
+                                //and if it was, it select another random number from the index
+                                //until a new random index appers and is not a word that has been alreary hidden 
+                                while(_words[index].IsHidden() && !IsCompletelyHidden())
+                                    {
+                                        index = random.Next(2, count);
+                                    }
+                                _words[index].Hide();
+                            }
             }
 
         
@@ -37,6 +50,7 @@ public class Scripture
             }
         public bool IsCompletelyHidden()
             {
+                
                 int finisher = 0; 
 
                 foreach(Word word in _words)
@@ -51,7 +65,13 @@ public class Scripture
                                 finisher += 0;
                             }
                     }
-                    return finisher > 0 ? true : false;
-
+                if (finisher > 2)
+                    {
+                        return false;
+                    }
+                else
+                    {
+                        return true;
+                    }
             }
     }

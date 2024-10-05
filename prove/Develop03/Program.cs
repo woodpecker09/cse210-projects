@@ -4,32 +4,32 @@ class Program
 {
     static void Main(string[] args)
     {
-        string end = "";
-        Console.WriteLine("\nPress enter to continue or type 'quit' to finish");
-        end = Console.ReadLine(); 
-        Reference reference1 = new Reference("hola como estas?, yo bien, y tu?", 2, 2);
-        Scripture scripture1 = new Scripture(reference1, reference1.GetDisplayText());
-        bool finisher = scripture1.IsCompletelyHidden();
-        while(end != "quit" && finisher)
-            {
-                Console.WriteLine("\nPress enter to continue or type 'quit' to finish");
-                end = Console.ReadLine();
-                if (end != "quit" && finisher)
-                    {
+            Console.Clear();
+
+            Reference newReference = new Reference("Proverbs Trust in the Lord with all thine heart and lean not unto thine own understanding; In all thy ways acknowledge him, and he shall direct thy paths.", 3, 5, 6);
+            Scripture newScripture = new Scripture(newReference, newReference.GetDisplayText());
+            bool finisher = newScripture.IsCompletelyHidden();
+
+            Console.WriteLine(newScripture.GetDisplayText());
+            string end = "";
+
+            while(end != "quit" && !finisher)
+                {
+                    Console.WriteLine("\nPress enter to continue or type 'quit' to finish");
+                    end = Console.ReadLine();
+                    if (end != "quit" && !finisher)
+                        {
+
+                            Console.Clear();
+                            finisher = newScripture.IsCompletelyHidden();
+                            if (!finisher)
+                                {
+                                    newScripture.HideRandomWords(2);
+                                    Console.WriteLine(newScripture.GetDisplayText());
+                                }
 
 
-                        string str = scripture1.GetDisplayText();
-                        string[] words = str.Split(' ');
-                        int count = words.Count();
-
-                        Random random = new Random();
-                        int index = random.Next(count - 1);
-
-                        scripture1.HideRandomWords(index);
-                        Console.WriteLine(scripture1.GetDisplayText());
-                        finisher = scripture1.IsCompletelyHidden();
-
-                    }
-            }
+                        }
+                }
     }
 }

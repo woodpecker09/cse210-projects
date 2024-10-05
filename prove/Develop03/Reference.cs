@@ -26,15 +26,13 @@ public class Reference
                 string noFirstWord = _book.Replace($"{firstWord} ", "");
                 if (_endVerse == 0)
                     {
-                        Console.WriteLine($"{firstWord} {_chapter}:{_verse} {noFirstWord}");
+                        return $"{firstWord} {_chapter}:{_verse} {noFirstWord}";
 
                     } 
                 else
                     {
-                        Console.WriteLine($"{firstWord} {_chapter}:{_verse}-{_endVerse} {noFirstWord}");
+                        return $"{firstWord} {_chapter}:{_verse}-{_endVerse} {noFirstWord}";
                     }
-                
-                return noFirstWord;
             }
 
     }
