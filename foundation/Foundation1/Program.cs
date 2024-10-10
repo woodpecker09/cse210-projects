@@ -50,7 +50,7 @@ class Program
             {
                 //display the title, author, length, number of comments
                 
-                Console.WriteLine($"\n\ntitle: {video._title} author: {video._author} lenght: {video._lenght}(seconds) number of comments: {video.NumberComments()}");
+                Console.WriteLine($"\n\ntitle: {video._title} author: {video._author} lenght: {video._length}(seconds) number of comments: {video.NumberComments()}");
                 foreach(Comment comment in video._comments)
                     {
                         Console.WriteLine($"\ncommenter's name: {comment._peoplesName} text: {comment._textComment}");
