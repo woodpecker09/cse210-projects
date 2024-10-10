@@ -2,12 +2,12 @@ public class Order
     {
         private List<Product> _products;
          
-        private Customer _customers;
+        private Customer _customer;
         
         public Order(Customer customer)
             {
                 _products = new List<Product>();
-                _customers = customer;
+                _customer = customer;
             }
         public void AddProducts(Product product)
             {
@@ -20,7 +20,7 @@ public class Order
                     {
                         totalPrice += product.TotalPrice();
                     }
-                if (_customers.LiveInUSA())
+                if (_customer.LiveInUSA())
                     {
                         totalPrice += 5;
                     }
@@ -32,7 +32,7 @@ public class Order
             }
         public string AddressLable()
             {
-                return _customers.ShipLable();
+                return _customer.ShipLable();
             }
         public string ShippLable()
             {
