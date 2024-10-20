@@ -3,12 +3,8 @@ public class ListingActivity : Activity
     private int _count; 
     private List<string> _prompts;
 
-    public ListingActivity(string name, string descrption, int duration) : base(name,descrption,duration)
+    public ListingActivity(string name, string descrption) : base(name,descrption)
     {
-        
-        name = "Listing Activity";
-        descrption = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
-       
         _prompts = new List<string>
         {
             "Who are people that you appreciate?",
@@ -20,16 +16,41 @@ public class ListingActivity : Activity
     }
     public void Run()
     {
+        DisplayStratingMessage();
+        Console.Clear();
+        Console.WriteLine("Get Ready...");
+        ShowSpiner(5);
+        GetRandomPrompt();
+        Console.Write("You may begin in: ");
+        ShowCountDown (5);
+        _count = GetListFromUser().Count();
+        Console.WriteLine($"You listed {_count} items!");
+        DisplayEndingMessage();
 
     }
     public void GetRandomPrompt()
     {
+        Random random = new Random();
 
+        int index = random.Next(_prompts.Count);
+        Console.WriteLine("List as many responses you can to the following prompt: ");
+        Console.WriteLine($"{_prompts[index]}");
     }
     public List<string> GetListFromUser()
     {
-        List<string> strings = new();
-        _count = strings.Count();
-        return strings;
+        List<string> list = new ();
+        string inputs = "";
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
+        while (DateTime.Now < endTime)
+        {
+            Console.Write("> ");
+            inputs = Console.ReadLine();
+            if (inputs != "")
+            {
+                list.Add(inputs);
+            }
+        }
+        return list;
     }
 }

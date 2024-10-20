@@ -1,29 +1,73 @@
 public class Activity
 {
     private string _name;
-    private string _descrption;
+    private string _description;
     private int _duration;
 
-    public  Activity(string name, string descrption, int duration)
+    public  Activity(string name, string description)
     {
         _name = name;
-        _descrption = descrption;
-        _duration = duration;
+        _description = description;
     }
-    public void DisplayStratingMessage ()
+    public void DisplayStratingMessage()
     {
+        Console.Clear();
+        Console.WriteLine($"Welcome to the {_name}");
+        Console.WriteLine(_description);
+        Console.Write("\nhow long in seconds, would you like for your session? ");
+        _duration = int.Parse(Console.ReadLine());
+    }
+    public void DisplayEndingMessage()
+    {
+        Console.WriteLine("\nWell done!!");
+        ShowSpiner(5);
+        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_name}");
+        ShowSpiner(5);
+    }
+    public void ShowSpiner(int seconds)
+    {
+        List<string> animationString = new List<string>
+        {
+            "|","/","-","\\","|","/","-","\\"
+        };
 
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(seconds);
+
+        int i = 0;
+
+        while(DateTime.Now < endTime)
+        {
+            string s = animationString[i];
+            Console.Write(s);
+            
+            Thread.Sleep(250);
+
+            Console.Write("\b \b");
+
+            i++;
+            
+            if(i >= animationString.Count())
+            {
+                i = 0;
+            }
+        }
     }
-        public void DisplayEndingMessage ()
+    public void ShowCountDown (int seconds)
     {
+        for (int i = 1; seconds >= i; seconds--)
+        {
+            Console.Write(seconds);
+            
+            Thread.Sleep(1000);
+
+            Console.Write("\b \b");
+        }
+        Console.WriteLine("");
         
     }
-        public void ShowSpiner ()
+    public int GetDuration()
     {
-        
-    }
-        public void ShowCountDown (int seconds)
-    {
-        
+        return _duration;
     }
 }

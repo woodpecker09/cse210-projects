@@ -2,7 +2,7 @@ public class ReflectingActivity : Activity
 {
     private List<string> _prompts; 
     private List<string> _questions;
-    public ReflectingActivity(string name, string descrption, int duration) : base(name,descrption,duration)
+    public ReflectingActivity(string name, string descrption) : base(name,descrption)
     {
         _prompts = new List<string>
         {
@@ -28,24 +28,54 @@ public class ReflectingActivity : Activity
 
     public void Run()
     {
-
+        DisplayStratingMessage();
+        Console.Clear();
+        Console.WriteLine("Get Ready...");
+        ShowSpiner(5);
+        DisplayPrompt();
+        Console.WriteLine("Now ponder on each of the following questions as they related to this experience");
+        Console.Write("you may begain in: ");
+        ShowCountDown (5);
+        Console.Clear();
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(GetDuration());
+        while (DateTime.Now < endTime)
+        {
+            DisplayQuestion();   
+            ShowSpiner(10);
+                   
+        }
+        
+        DisplayEndingMessage();
     }
 
     public string GetRandomPrompt()
     {
-        return "";
+        Random random = new Random();
+
+        int index = random.Next(_prompts.Count);
+
+        return _prompts[index];
     }
     public string GetRandomQuestion()
     {
-        return "";
+        Random random = new Random();
+
+        int index = random.Next(_questions.Count);
+
+        return _questions[index];
     }
     
     public void DisplayPrompt()
     {
-
+        Console.WriteLine("\nConsider the following prompt:");
+        Console.WriteLine($"--- {GetRandomPrompt()} ---");
+        string enter;
+        Console.WriteLine("When you have something in mind, press enter to continue");
+        enter = Console.ReadLine();
     }
     public void DisplayQuestion()
     {
-        
+        Console.Write($"\n>{GetRandomQuestion()}");
     }
 }
