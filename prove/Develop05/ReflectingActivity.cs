@@ -1,6 +1,6 @@
-// in line 116 I created a funtion to verifie if the questions are repited or not.
-// I enhanced GetRandomQuestion() at line:75 create a while loop to get another random index but the ones that are already used
-// I enhanced Run() at line:57 to show a timer for the time remaining of the section
+// in line 121 I created a funtion to verifie if the questions are repited or not.
+// I enhanced GetRandomQuestion() at line:95 create a while loop to get another random index but the ones that are already used
+// I enhanced Run() at line:62 to show a timer for the time remaining of the section
 // I enhanced Activity (see Activity for more information)
 public class ReflectingActivity : Activity
 {
