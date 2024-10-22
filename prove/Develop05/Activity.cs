@@ -1,3 +1,5 @@
+/* I enhanced ShowCountDown() at line:58 using another for loop to ensure that the numbers in the console
+are erased does not matter how many numbers are Units,Tens,Hundreds,etc.*/
 public class Activity
 {
     private string _name;
@@ -58,14 +60,19 @@ public class Activity
         for (int i = 1; seconds >= i; seconds--)
         {
             Console.Write(seconds);
-            
+ 
+            string currentDisplay = seconds.ToString();
+
             Thread.Sleep(1000);
 
-            Console.Write("\b \b");
+            for (int j = 0; j < currentDisplay.Length; j++)
+            {
+                Console.Write("\b \b");
+            }
         }
-        Console.WriteLine("");
-        
+        Console.WriteLine("");    
     }
+    
     public int GetDuration()
     {
         return _duration;
