@@ -1,6 +1,6 @@
 /*
 I create another attribute to my GoalManager that gives the user the ability to level up.
-Everytime the _score increases by 100 the user levels up, and system Congratulates the player
+Everytime the _score increases by 100 the user levels up, and the program Congratulates the player
 */
 
 using System.IO;
